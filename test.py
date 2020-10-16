@@ -27,7 +27,7 @@ if __name__ == '__main__':
     maxlen = max([len(token) for token in vocab]) + 2
     train_encoder, train_decoder, train_target = transform(
         vocab, maxlen, error_rate=error_rate, shuffle=False, train=False)
-    df = pd.read_csv("data/spell_test.csv")
+    df = pd.read_csv("data/test.csv")
     words = list(df.Incorrect)
     cor_words = []
     for w in words:
@@ -60,7 +60,7 @@ if __name__ == '__main__':
         cor_words.append(' '.join([t for t in decoded_tokens]))
 
     df['Spellchecker'] = cor_words
-    df.to_csv("data/spell_test_result.csv")
+    df.to_csv("data/test_result.csv")
     print(df.head())
 
     # prediction accuracy
